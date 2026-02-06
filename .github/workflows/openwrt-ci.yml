@@ -66,11 +66,11 @@ jobs:
       - name: Generate configuration file
         run: |
           # 1. 明确指向你上传的文件名
-          if [ -f my_full_config ]; then
-            cp -f my_full_config .config
-            echo "SUCCESS: Using my_full_config from repository"
+          if [ -f my_seed_config ]; then
+            cp -f my_seed_config .config
+            echo "SUCCESS: Using my_seed_config from repository"
           else
-            echo "ERROR: my_full_config not found in repository root!"
+            echo "ERROR: my_seed_config not found in repository root!"
             ls -R # 打印当前目录结构方便排查
             exit 1
           fi
