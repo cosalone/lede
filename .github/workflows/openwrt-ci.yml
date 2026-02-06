@@ -64,7 +64,16 @@ jobs:
           ./scripts/feeds install -a
 
       - name: Generate configuration file
-        run: make defconfig
+        run: |
+          # 1. 如果仓库中有完整配置文件，则强制覆盖
+          if [ -f full.config ]; then
+            cp -f full.config .config
+            echo "Using full.config from repository"
+          fi
+          
+          # 2. 执行并补全配置。即使是完整配置，执行 defconfig 也是必要的，
+          # 它会根据当前源码版本校验配置有效性，并补全缺失的符号。
+          make defconfig
 
       - name: Download packages
         run: make download -j16
