@@ -68,8 +68,8 @@ jobs:
           # 1. 修改默认 IP 为 192.168.6.1
           sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generate
 
-          # 2. 修改默认主机名为 My-Router (可选)
-          # sed -i 's/OpenWrt/My-Router/g' package/base-files/files/bin/config_generate
+          # 2. 修改默认主机名为 OpenWrt (可选)
+          sed -i 's/OpenWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 
           # 3. 修改默认时区为上海 (可选)
           sed -i "s/'UTC'/'CST-8'\n\t\tset system.@system[-1].zonename='Asia\/Shanghai'/g" package/base-files/files/bin/config_generate
